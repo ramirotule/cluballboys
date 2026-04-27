@@ -1,7 +1,115 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, CheckCircle } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, CheckCircle, X, ScrollText } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+
+function TerminosModal({ onClose }) {
+  useEffect(() => {
+    const handler = e => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8"
+      style={{ backgroundColor: '#00000070' }}
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[80vh] flex flex-col overflow-hidden"
+        style={{ borderTop: '4px solid #F9EA1B' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#1e1e6e' }}>
+              <ScrollText className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <h3 className="font-display font-black uppercase text-sm" style={{ color: '#1e1e6e' }}>Términos y Condiciones</h3>
+              <p className="text-xs text-gray-400">Club Atlético All Boys · Santa Rosa, La Pampa</p>
+            </div>
+          </div>
+          <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center border border-gray-200 hover:border-gray-400 transition-colors text-gray-400">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="overflow-y-auto px-6 py-5 flex flex-col gap-5 text-sm" style={{ color: '#374151' }}>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>1. Condiciones de membresía</h4>
+            <p className="text-gray-500 leading-relaxed">
+              El registro en el sitio web del Club Atlético All Boys está habilitado exclusivamente para socios activos. El acceso a la plataforma digital no reemplaza la condición de socio, la cual se rige por el estatuto institucional vigente y requiere el pago de la cuota social correspondiente.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>2. Uso de las instalaciones</h4>
+            <p className="text-gray-500 leading-relaxed">
+              El acceso a las instalaciones del club (estadio, natatorio, canchas, cantina y demás espacios) está sujeto a la condición de socio al día con sus obligaciones. El club se reserva el derecho de admisión y permanencia según lo establezca su reglamento interno.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>3. Pago de cuotas</h4>
+            <p className="text-gray-500 leading-relaxed">
+              El incumplimiento en el pago de la cuota social por más de tres (3) meses consecutivos podrá dar lugar a la suspensión temporaria de los derechos del socio, incluyendo el acceso a las instalaciones y actividades del club, hasta regularizar la situación.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>4. Código de conducta</h4>
+            <p className="text-gray-500 leading-relaxed">
+              Los socios se comprometen a mantener un comportamiento respetuoso hacia las autoridades, empleados, deportistas y demás socios del club. Cualquier conducta que atente contra los valores institucionales, la integridad física o moral de las personas podrá ser sancionada conforme al estatuto.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>5. Privacidad y datos personales</h4>
+            <p className="text-gray-500 leading-relaxed">
+              Los datos personales ingresados al registrarse son utilizados exclusivamente para la gestión interna del club y la comunicación con el socio. No serán cedidos a terceros sin consentimiento expreso, en cumplimiento de la Ley N° 25.326 de Protección de Datos Personales de la República Argentina.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>6. Derechos y obligaciones</h4>
+            <p className="text-gray-500 leading-relaxed">
+              Todo socio tiene derecho a participar de las actividades deportivas, culturales y sociales organizadas por el club, a votar y ser votado en elecciones institucionales (según categoría de socio) y a acceder a la información pública del club. A su vez, tiene la obligación de respetar el estatuto, el reglamento interno y las decisiones de la Comisión Directiva.
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-display font-bold uppercase text-xs tracking-widest mb-2" style={{ color: '#1e1e6e' }}>7. Modificaciones</h4>
+            <p className="text-gray-500 leading-relaxed">
+              El Club Atlético All Boys se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Los cambios serán comunicados a través del sitio web y/o por correo electrónico a los socios registrados.
+            </p>
+          </section>
+
+          <p className="text-xs text-gray-400 border-t border-gray-100 pt-4">
+            Última actualización: abril 2026 · Club Atlético All Boys, Hilario Lagos 435, Santa Rosa, La Pampa.
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div className="px-6 py-4 border-t border-gray-100">
+          <button
+            onClick={onClose}
+            className="w-full py-2.5 rounded-xl font-display font-bold uppercase text-sm transition-all duration-300"
+            style={{ backgroundColor: '#1e1e6e', color: 'white' }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#F9EA1B'; e.currentTarget.style.boxShadow = '0 0 20px #F9EA1B88, 0 0 6px #F9EA1BAA' }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.boxShadow = 'none' }}
+          >
+            Entendido
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function InputField({ label, type, name, value, onChange, placeholder, icon: Icon, showToggle, onToggle, show }) {
   return (
@@ -47,6 +155,7 @@ export default function LoginPage() {
   const [registered, setRegistered] = useState(false)
   const [loginError, setLoginError] = useState(false)
 
+  const [showTerminos, setShowTerminos] = useState(false)
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
   const [regForm, setRegForm] = useState({ nombre: '', email: '', password: '' })
 
@@ -66,6 +175,8 @@ export default function LoginPage() {
   }
 
   return (
+    <>
+    {showTerminos && <TerminosModal onClose={() => setShowTerminos(false)} />}
     <div
       className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #1e1e6e 0%, #2d2d9e 50%, #1a1a5e 100%)' }}
@@ -171,10 +282,16 @@ export default function LoginPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl font-display font-bold uppercase tracking-wide text-sm transition-all duration-200 mt-1"
+                  className="w-full py-3 rounded-xl font-display font-bold uppercase tracking-wide text-sm transition-all duration-300 mt-1"
                   style={{ backgroundColor: '#1e1e6e', color: 'white' }}
-                  onMouseEnter={e => e.currentTarget.style.backgroundColor = '#F9EA1B'}
-                  onMouseLeave={e => e.currentTarget.style.backgroundColor = '#1e1e6e'}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = '#F9EA1B'
+                    e.currentTarget.style.boxShadow = '0 0 20px #F9EA1B88, 0 0 6px #F9EA1BAA'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'white'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
                 >
                   Ingresar
                 </button>
@@ -260,18 +377,24 @@ export default function LoginPage() {
 
                     <p className="text-xs text-gray-400 -mt-2">
                       Al registrarte aceptás los{' '}
-                      <span className="font-semibold underline cursor-pointer" style={{ color: '#1e1e6e' }}>
+                      <button type="button" onClick={() => setShowTerminos(true)} className="font-semibold underline" style={{ color: '#1e1e6e' }}>
                         términos y condiciones
-                      </span>{' '}
+                      </button>{' '}
                       del club.
                     </p>
 
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-xl font-display font-bold uppercase tracking-wide text-sm transition-all duration-200 mt-1"
+                      className="w-full py-3 rounded-xl font-display font-bold uppercase tracking-wide text-sm transition-all duration-300 mt-1"
                       style={{ backgroundColor: '#F9EA1B', color: '#1e1e6e' }}
-                      onMouseEnter={e => e.currentTarget.style.backgroundColor = '#1e1e6e'}
-                      onMouseLeave={e => e.currentTarget.style.backgroundColor = '#F9EA1B'}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.boxShadow = '0 0 20px #1e1e6e88, 0 0 6px #1e1e6eAA'
+                        e.currentTarget.style.backgroundColor = '#f0db00'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.boxShadow = 'none'
+                        e.currentTarget.style.backgroundColor = '#F9EA1B'
+                      }}
                     >
                       Crear cuenta
                     </button>
@@ -295,5 +418,6 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
