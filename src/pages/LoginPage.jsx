@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, CheckCircle, X, ScrollText } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, CheckCircle, X, ScrollText, KeyRound, Send } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 function TerminosModal({ onClose }) {
@@ -111,6 +111,122 @@ function TerminosModal({ onClose }) {
   )
 }
 
+function RecuperarModal({ onClose }) {
+  const [email, setEmail] = useState('')
+  const [sent, setSent] = useState(false)
+
+  useEffect(() => {
+    const handler = e => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setSent(true)
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      style={{ backgroundColor: '#00000070' }}
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden"
+        style={{ borderTop: '4px solid #F9EA1B' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#1e1e6e' }}>
+              <KeyRound className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <h3 className="font-display font-black uppercase text-sm" style={{ color: '#1e1e6e' }}>Recuperar contraseña</h3>
+              <p className="text-xs text-gray-400">Te enviamos un link por mail</p>
+            </div>
+          </div>
+          <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center border border-gray-200 hover:border-gray-400 transition-colors text-gray-400">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="px-6 py-6">
+          {sent ? (
+            <div className="flex flex-col items-center text-center gap-4 py-4">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1e1e6e10' }}>
+                <Send className="w-6 h-6" style={{ color: '#1e1e6e' }} />
+              </div>
+              <div>
+                <h4 className="font-display font-black uppercase text-base mb-1" style={{ color: '#1e1e6e' }}>¡Listo!</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  Si <span className="font-semibold" style={{ color: '#1e1e6e' }}>{email}</span> está registrado, vas a recibir un mail con el link para restablecer tu contraseña en los próximos minutos.
+                </p>
+                <p className="text-xs text-gray-400 mt-2">Revisá también tu carpeta de spam.</p>
+              </div>
+              <button
+                onClick={onClose}
+                className="w-full py-2.5 rounded-xl font-display font-bold uppercase text-sm transition-all duration-300 mt-1"
+                style={{ backgroundColor: '#1e1e6e', color: 'white' }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#F9EA1B'; e.currentTarget.style.boxShadow = '0 0 20px #F9EA1B88, 0 0 6px #F9EA1BAA' }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.boxShadow = 'none' }}
+              >
+                Cerrar
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Ingresá el correo electrónico asociado a tu cuenta y te enviaremos un link para restablecer tu contraseña.
+              </p>
+              <div>
+                <label className="block text-xs font-display font-bold uppercase tracking-widest mb-1.5" style={{ color: '#1e1e6e' }}>
+                  Email
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: '#2E2DA860' }} />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="tu@email.com"
+                    className="w-full border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm outline-none transition-all duration-200 bg-white"
+                    style={{ color: '#2E2DA8' }}
+                    onFocus={e => { e.target.style.borderColor = '#2E2DA8'; e.target.style.boxShadow = '0 0 0 3px #F9EA1B30' }}
+                    onBlur={e => { e.target.style.borderColor = '#e5e7eb'; e.target.style.boxShadow = 'none' }}
+                  />
+                </div>
+              </div>
+              <div className="flex gap-2 pt-1">
+                <button
+                  type="submit"
+                  className="flex-1 py-2.5 rounded-xl font-display font-bold uppercase text-sm transition-all duration-300"
+                  style={{ backgroundColor: '#1e1e6e', color: 'white' }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#F9EA1B'; e.currentTarget.style.boxShadow = '0 0 20px #F9EA1B88, 0 0 6px #F9EA1BAA' }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.boxShadow = 'none' }}
+                >
+                  Enviar link
+                </button>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-4 py-2.5 rounded-xl font-display font-bold uppercase text-sm border-2 transition-all"
+                  style={{ borderColor: '#e5e7eb', color: '#6b7280' }}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function InputField({ label, type, name, value, onChange, placeholder, icon: Icon, showToggle, onToggle, show }) {
   return (
     <div>
@@ -156,6 +272,7 @@ export default function LoginPage() {
   const [loginError, setLoginError] = useState(false)
 
   const [showTerminos, setShowTerminos] = useState(false)
+  const [showRecuperar, setShowRecuperar] = useState(false)
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
   const [regForm, setRegForm] = useState({ nombre: '', email: '', password: '' })
 
@@ -177,6 +294,7 @@ export default function LoginPage() {
   return (
     <>
     {showTerminos && <TerminosModal onClose={() => setShowTerminos(false)} />}
+    {showRecuperar && <RecuperarModal onClose={() => setShowRecuperar(false)} />}
     <div
       className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #1e1e6e 0%, #2d2d9e 50%, #1a1a5e 100%)' }}
@@ -275,7 +393,7 @@ export default function LoginPage() {
                 )}
 
                 <div className="flex justify-end">
-                  <button type="button" className="text-xs font-semibold hover:underline" style={{ color: '#2E2DA8' }}>
+                  <button type="button" onClick={() => setShowRecuperar(true)} className="text-xs font-semibold hover:underline" style={{ color: '#2E2DA8' }}>
                     ¿Olvidaste tu contraseña?
                   </button>
                 </div>

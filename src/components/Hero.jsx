@@ -10,7 +10,7 @@ const heartbeat = {
     duration: 0.7,
     ease: 'easeInOut',
     repeat: Infinity,
-    repeatDelay: 1.4,
+    repeatDelay: 0.4,
   },
 }
 
