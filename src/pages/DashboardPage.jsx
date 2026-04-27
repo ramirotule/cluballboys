@@ -3,10 +3,12 @@ import { Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import SocioPanel, { SECTIONS } from '../components/dashboard/SocioPanel'
 import AdminPanel from '../components/dashboard/AdminPanel'
-import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard } from 'lucide-react'
+import LigasPanel from '../components/dashboard/LigasPanel'
+import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard, Trophy } from 'lucide-react'
 
 const ADMIN_SECTIONS = [
   { id: 'noticias', label: 'Noticias', icon: Newspaper },
+  { id: 'ligas',    label: 'Ligas',    icon: Trophy },
 ]
 
 export default function DashboardPage() {
@@ -130,7 +132,8 @@ export default function DashboardPage() {
         {/* Main content */}
         <main className="flex-1 p-6 lg:p-10 min-w-0">
           {user.role === 'socio' && <SocioPanel section={section} />}
-          {user.role === 'admin' && <AdminPanel />}
+          {user.role === 'admin' && section === 'noticias' && <AdminPanel />}
+          {user.role === 'admin' && section === 'ligas' && <LigasPanel />}
         </main>
       </div>
     </div>

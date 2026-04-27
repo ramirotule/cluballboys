@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex-grow flex items-center justify-center overflow-hidden min-h-screen"
+      className="relative flex-grow flex items-start justify-center overflow-hidden min-h-screen pt-12 sm:pt-24"
     >
       {/* Fondo con gradiente de colores del club */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1e1e6e] via-[#2d2d9e] to-[#1a1a5e]" />
@@ -47,7 +47,7 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#F9EA1B]/8 blur-3xl" />
 
       {/* Contenido */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto py-20">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pb-20">
         {/* Escudo con latido */}
         <div className="flex justify-center mb-8">
           <div className="relative flex items-center justify-center">
@@ -59,7 +59,7 @@ export default function Hero() {
             />
             <motion.img
               src="/logo.png"
-              alt="Escudo Club Atlético All Boys"
+              alt="Escudo Club All Boys"
               className="relative w-44 h-44 object-contain drop-shadow-2xl"
               animate={heartbeat}
             />
@@ -67,8 +67,7 @@ export default function Hero() {
         </div>
 
         <h1 className="text-white font-black text-5xl sm:text-6xl lg:text-7xl tracking-tight mb-4 font-display">
-          Club Atlético
-          <span className="block text-[#F9EA1B]">All Boys</span>
+          Club <span className="text-[#F9EA1B]">All Boys</span>
         </h1>
 
         <p className="text-white/70 text-lg sm:text-xl font-medium tracking-widest uppercase mb-2">

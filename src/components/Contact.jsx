@@ -27,7 +27,7 @@ export default function Contact() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#F9EA1B]/10 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#F9EA1B]/8 blur-3xl" />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-2">Club Atlético All Boys</p>
+          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-2">Club All Boys</p>
           <h1 className="text-white font-display font-black text-5xl sm:text-6xl uppercase tracking-tight mb-4">
             Contacto
           </h1>

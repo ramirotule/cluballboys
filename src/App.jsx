@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { LigasProvider } from './context/LigasContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -11,6 +12,7 @@ import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import ShopPage from './pages/ShopPage'
 import CheckoutPage from './pages/CheckoutPage'
+import LigasPage from './pages/LigasPage'
 
 function Layout() {
   const { pathname } = useLocation()
@@ -31,6 +33,7 @@ function Layout() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/ligas" element={<LigasPage />} />
         </Routes>
       </main>
       {!isLogin && <Footer />}
@@ -40,8 +43,10 @@ function Layout() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Layout />
-    </BrowserRouter>
+    <LigasProvider>
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
+    </LigasProvider>
   )
 }

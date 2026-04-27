@@ -49,10 +49,10 @@ function Copiable({ label, value }) {
     setTimeout(() => setCopied(false), 1500)
   }
   return (
-    <div className="flex items-center justify-between bg-allboys-gray rounded-xl px-4 py-3">
-      <div>
+    <div className="flex items-center justify-between bg-allboys-gray rounded-xl px-4 py-3 gap-3">
+      <div className="min-w-0">
         <p className="text-xs font-display font-bold uppercase tracking-widest text-gray-400">{label}</p>
-        <p className="font-bold text-sm mt-0.5" style={{ color: '#1e1e6e' }}>{value}</p>
+        <p className="font-bold text-xs sm:text-sm mt-0.5 break-all" style={{ color: '#1e1e6e' }}>{value}</p>
       </div>
       <button
         onClick={copy}

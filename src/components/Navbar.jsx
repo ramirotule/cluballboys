@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Historia', to: '/historia' },
   { label: 'Deportes', to: '/deportes' },
   { label: 'Autoridades', to: '/autoridades' },
+  { label: 'Ligas', to: '/ligas' },
   { label: 'Noticias', to: '/noticias' },
   { label: 'E-Shop', to: '/shop' },
   { label: 'Contacto', to: '/contacto' },
@@ -72,11 +73,11 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Club Atlético All Boys"
-              className="h-10 w-auto group-hover:scale-105 transition-transform duration-200"
+              className="h-12 w-auto group-hover:scale-105 transition-transform duration-200"
             />
             <div className="hidden sm:block leading-tight">
               <p className="font-display font-bold uppercase tracking-widest text-sm" style={{ color: '#2E2DA8' }}>
-                All Boys
+                Club All Boys
               </p>
               <p className="font-display text-xs font-medium tracking-wider" style={{ color: '#DFD018' }}>
                 Santa Rosa · La Pampa
