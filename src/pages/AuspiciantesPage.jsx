@@ -1,12 +1,6 @@
 import { Mail, Phone, ArrowRight, Handshake } from 'lucide-react'
 import { Link } from 'react-router-dom'
-
-// ─── AUSPICIANTES ─────────────────────────────────────────────────────────────
-// Para agregar un auspiciante: { nombre, rubro, logo, web (opcional) }
-const AUSPICIANTES = [
-  // Ejemplo (reemplazar con los reales):
-  // { nombre: 'Empresa Ejemplo', rubro: 'Construcción', logo: null, web: 'https://...' },
-]
+import { useAuspiciantes } from '../context/AuspiciantesContext'
 
 const BENEFICIOS = [
   { icon: '📢', titulo: 'Visibilidad', descripcion: 'Tu marca presente en el estadio, las redes sociales y el sitio web del club.' },
@@ -18,8 +12,8 @@ const BENEFICIOS = [
 function AuspicianteCard({ auspiciante }) {
   const card = (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 hover:border-yellow-300 p-6 flex flex-col items-center gap-4 text-center group">
-      {auspiciante.logo ? (
-        <img src={auspiciante.logo} alt={auspiciante.nombre} className="h-20 object-contain" />
+      {auspiciante.logoPreview ? (
+        <img src={auspiciante.logoPreview} alt={auspiciante.nombre} className="h-20 object-contain" />
       ) : (
         <div className="w-24 h-24 rounded-xl flex items-center justify-center text-3xl font-display font-black" style={{ backgroundColor: '#F9EA1B', color: '#302782' }}>
           {auspiciante.nombre.charAt(0)}
@@ -43,6 +37,8 @@ function AuspicianteCard({ auspiciante }) {
 }
 
 export default function AuspiciantesPage() {
+  const { auspiciantes: AUSPICIANTES } = useAuspiciantes()
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F3F4F6' }}>
 

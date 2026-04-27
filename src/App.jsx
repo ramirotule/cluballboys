@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { LigasProvider } from './context/LigasContext'
+import { AuspiciantesProvider } from './context/AuspiciantesContext'
+import { CantinaProvider } from './context/CantinaContext'
 import { NoticiasProvider } from './context/NoticiasContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -57,9 +59,13 @@ export default function App() {
   return (
     <NoticiasProvider>
       <LigasProvider>
-        <BrowserRouter>
-          <Layout />
-        </BrowserRouter>
+        <AuspiciantesProvider>
+          <CantinaProvider>
+            <BrowserRouter>
+              <Layout />
+            </BrowserRouter>
+          </CantinaProvider>
+        </AuspiciantesProvider>
       </LigasProvider>
     </NoticiasProvider>
   )

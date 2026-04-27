@@ -4,11 +4,15 @@ import { useAuth } from '../context/AuthContext'
 import SocioPanel, { SECTIONS } from '../components/dashboard/SocioPanel'
 import AdminPanel from '../components/dashboard/AdminPanel'
 import LigasPanel from '../components/dashboard/LigasPanel'
-import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard, Trophy } from 'lucide-react'
+import AuspiciantesPanel from '../components/dashboard/AuspiciantesPanel'
+import CantinaPanel from '../components/dashboard/CantinaPanel'
+import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard, Trophy, Handshake, UtensilsCrossed } from 'lucide-react'
 
 const ADMIN_SECTIONS = [
-  { id: 'noticias', label: 'Noticias', icon: Newspaper },
-  { id: 'ligas',    label: 'Ligas',    icon: Trophy },
+  { id: 'noticias',      label: 'Noticias',      icon: Newspaper       },
+  { id: 'ligas',         label: 'Ligas',         icon: Trophy          },
+  { id: 'cantina',       label: 'Cantina',       icon: UtensilsCrossed },
+  { id: 'auspiciantes',  label: 'Auspiciantes',  icon: Handshake       },
 ]
 
 export default function DashboardPage() {
@@ -134,6 +138,8 @@ export default function DashboardPage() {
           {user.role === 'socio' && <SocioPanel section={section} />}
           {user.role === 'admin' && section === 'noticias' && <AdminPanel />}
           {user.role === 'admin' && section === 'ligas' && <LigasPanel />}
+          {user.role === 'admin' && section === 'cantina' && <CantinaPanel />}
+          {user.role === 'admin' && section === 'auspiciantes' && <AuspiciantesPanel />}
         </main>
       </div>
     </div>

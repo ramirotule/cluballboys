@@ -1,59 +1,5 @@
 import { MapPin, Clock, Phone } from 'lucide-react'
-
-const MENU = [
-  {
-    categoria: 'Sandwiches',
-    icon: '🥪',
-    items: [
-      { nombre: 'Sandwich de milanesa', descripcion: 'Milanesa de ternera con lechuga, tomate y mayonesa', precio: 3500 },
-      { nombre: 'Sandwich de jamón y queso', descripcion: 'Jamón cocido, queso y manteca en pan árabe', precio: 2800 },
-      { nombre: 'Sandwich de lomito', descripcion: 'Lomito a la plancha con morrones y queso fundido', precio: 4200 },
-      { nombre: 'Sandwich veggie', descripcion: 'Berenjena grillada, queso, tomate y rúcula', precio: 3000 },
-    ],
-  },
-  {
-    categoria: 'Empanadas',
-    icon: '🫔',
-    items: [
-      { nombre: 'Empanada de carne', descripcion: 'Carne picada con cebolla, morrón y especias', precio: 900 },
-      { nombre: 'Empanada de jamón y queso', descripcion: 'Jamón y queso cremoso', precio: 850 },
-      { nombre: 'Empanada de humita', descripcion: 'Choclo cremoso con especias', precio: 850 },
-      { nombre: 'Empanada de pollo', descripcion: 'Pollo deshebrado con verduras salteadas', precio: 900 },
-    ],
-  },
-  {
-    categoria: 'Minutas',
-    icon: '🍳',
-    items: [
-      { nombre: 'Milanesa napolitana', descripcion: 'Con salsa, jamón, queso y papas fritas', precio: 6500 },
-      { nombre: 'Milanesa con papas', descripcion: 'Milanesa de ternera con papas fritas', precio: 5800 },
-      { nombre: 'Hamburguesa casera', descripcion: 'Con lechuga, tomate, cebolla y papas fritas', precio: 5500 },
-      { nombre: 'Revuelto gramajo', descripcion: 'Huevos revueltos con papas pay y jamón', precio: 4500 },
-    ],
-  },
-  {
-    categoria: 'Bebidas',
-    icon: '🥤',
-    items: [
-      { nombre: 'Gaseosa (lata)', descripcion: 'Coca-Cola, Sprite, Fanta', precio: 1200 },
-      { nombre: 'Agua mineral', descripcion: 'Con o sin gas · 500ml', precio: 900 },
-      { nombre: 'Cerveza (porrón)', descripcion: 'Quilmes o Heineken', precio: 1800 },
-      { nombre: 'Café / Cortado', descripcion: 'Café espresso o cortado con leche', precio: 1000 },
-      { nombre: 'Mate cocido', descripcion: 'Con leche o con agua', precio: 800 },
-      { nombre: 'Jugo natural', descripcion: 'Naranja o limón exprimido', precio: 1400 },
-    ],
-  },
-  {
-    categoria: 'Postres y snacks',
-    icon: '🍰',
-    items: [
-      { nombre: 'Facturas', descripcion: 'Medialunas, vigilantes o croissants', precio: 700 },
-      { nombre: 'Tostado', descripcion: 'Jamón y queso en pan lactal', precio: 1800 },
-      { nombre: 'Porción de torta', descripcion: 'Consultar sabores del día', precio: 2200 },
-      { nombre: 'Alfajor', descripcion: 'Triple de maicena o de chocolate', precio: 900 },
-    ],
-  },
-]
+import { useCantina } from '../context/CantinaContext'
 
 function formatPrecio(n) {
   return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(n)
@@ -86,6 +32,8 @@ function MenuCard({ categoria }) {
 }
 
 export default function CantinaPage() {
+  const { menu: MENU } = useCantina()
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F3F4F6' }}>
 
