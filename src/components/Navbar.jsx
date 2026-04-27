@@ -10,6 +10,8 @@ const navLinks = [
   { label: 'Ligas', to: '/ligas' },
   { label: 'Noticias', to: '/noticias' },
   { label: 'E-Shop', to: '/shop' },
+  { label: 'Cantina', to: '/cantina' },
+  { label: 'Auspiciantes', to: '/auspiciantes' },
   { label: 'Contacto', to: '/contacto' },
 ]
 
@@ -65,7 +67,7 @@ export default function Navbar() {
       className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled ? 'shadow-lg border-b-2 border-allboys-yellow' : 'border-b border-gray-100'
         }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4">
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}

@@ -16,6 +16,8 @@ import ShopPage from './pages/ShopPage'
 import CheckoutPage from './pages/CheckoutPage'
 import LigasPage from './pages/LigasPage'
 import NoticiaPage from './pages/NoticiaPage'
+import CantinaPage from './pages/CantinaPage'
+import AuspiciantesPage from './pages/AuspiciantesPage'
 
 function Layout() {
   const { pathname } = useLocation()
@@ -42,6 +44,8 @@ function Layout() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/ligas" element={<LigasPage />} />
           <Route path="/noticias/:id" element={<NoticiaPage />} />
+          <Route path="/cantina" element={<CantinaPage />} />
+          <Route path="/auspiciantes" element={<AuspiciantesPage />} />
         </Routes>
       </main>
       {!isLogin && <Footer />}
