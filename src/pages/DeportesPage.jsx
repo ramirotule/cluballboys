@@ -38,12 +38,12 @@ const deportes = [
         <ellipse cx="26" cy="22" rx="18" ry="20" fill="#F9EA1B" stroke="#1e1e6e" strokeWidth="3" />
         {/* Cuerdas horizontales */}
         <line x1="10" y1="16" x2="42" y2="16" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="8"  y1="22" x2="44" y2="22" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="8" y1="22" x2="44" y2="22" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="10" y1="28" x2="42" y2="28" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
         {/* Cuerdas verticales */}
-        <line x1="18" y1="3"  x2="18" y2="41" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="26" y1="2"  x2="26" y2="42" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="34" y1="3"  x2="34" y2="41" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="18" y1="3" x2="18" y2="41" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="26" y1="2" x2="26" y2="42" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="34" y1="3" x2="34" y2="41" stroke="#1e1e6e" strokeWidth="1.5" strokeLinecap="round" />
         {/* Mango */}
         <rect x="21" y="40" width="10" height="20" rx="4" fill="#1e1e6e" />
         {/* Pelota */}
@@ -78,7 +78,7 @@ export default function DeportesPage() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#F9EA1B]/10 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#F9EA1B]/8 blur-3xl" />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-2">Club Atlético All Boys</p>
+          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-2">Club All Boys</p>
           <h1 className="text-white font-display font-black text-5xl sm:text-6xl uppercase tracking-tight mb-4">
             Deportes
           </h1>

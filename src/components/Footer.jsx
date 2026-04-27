@@ -144,7 +144,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-white/30 text-xs">
-            © {new Date().getFullYear()} Club Atlético All Boys — Santa Rosa, La Pampa. Todos los derechos reservados.
+            © {new Date().getFullYear()} Club All Boys — Santa Rosa, La Pampa. Todos los derechos reservados.
           </p>
           {/* <div className="flex items-center gap-3">
             {socialLinks.map(({ label, href, icon }) => (

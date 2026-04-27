@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+const FUNDACION = new Date(1923, 3, 23) // 23 de abril de 1923
+const añosDeHistoria = new Date().getFullYear() - FUNDACION.getFullYear()
+
 const heartbeat = {
   scale: [1, 1.13, 1, 1.08, 1],
   transition: {
@@ -79,7 +82,7 @@ export default function Hero() {
         </div>
 
         <p className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Más de 90 años de historia, deporte y comunidad en el corazón de La
+          Más de {añosDeHistoria} años de historia, deporte y comunidad en el corazón de La
           Pampa. Orgullo azul y amarillo.
         </p>
 

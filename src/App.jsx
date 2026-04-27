@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { LigasProvider } from './context/LigasContext'
+import { NoticiasProvider } from './context/NoticiasContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -13,10 +15,15 @@ import DashboardPage from './pages/DashboardPage'
 import ShopPage from './pages/ShopPage'
 import CheckoutPage from './pages/CheckoutPage'
 import LigasPage from './pages/LigasPage'
+import NoticiaPage from './pages/NoticiaPage'
 
 function Layout() {
   const { pathname } = useLocation()
   const isLogin = pathname === '/login' || pathname === '/dashboard'
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -34,6 +41,7 @@ function Layout() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/ligas" element={<LigasPage />} />
+          <Route path="/noticias/:id" element={<NoticiaPage />} />
         </Routes>
       </main>
       {!isLogin && <Footer />}
@@ -43,10 +51,12 @@ function Layout() {
 
 export default function App() {
   return (
-    <LigasProvider>
-      <BrowserRouter>
-        <Layout />
-      </BrowserRouter>
-    </LigasProvider>
+    <NoticiasProvider>
+      <LigasProvider>
+        <BrowserRouter>
+          <Layout />
+        </BrowserRouter>
+      </LigasProvider>
+    </NoticiasProvider>
   )
 }

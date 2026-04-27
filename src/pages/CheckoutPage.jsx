@@ -5,11 +5,11 @@ import { ArrowLeft, CheckCircle, Copy, Building2, Smartphone, MapPin, ChevronRig
 const MercadoPagoIcon = () => (
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
     <rect width="48" height="48" rx="10" fill="#009EE3" />
-    <path d="M8 24C8 15.163 15.163 8 24 8C32.837 8 40 15.163 40 24C40 32.837 32.837 40 24 40C15.163 40 8 32.837 8 24Z" fill="#009EE3"/>
-    <path d="M24 13C18.477 13 14 17.477 14 23C14 26.176 15.512 29.003 17.851 30.851L16 35L20.92 33.394C21.892 33.782 22.922 34 24 34C29.523 34 34 29.523 34 24C34 18.477 29.523 13 24 13Z" fill="white"/>
-    <path d="M19 22.5C19 21.672 19.672 21 20.5 21C21.328 21 22 21.672 22 22.5C22 23.328 21.328 24 20.5 24C19.672 24 19 23.328 19 22.5Z" fill="#009EE3"/>
-    <path d="M26 22.5C26 21.672 26.672 21 27.5 21C28.328 21 29 21.672 29 22.5C29 23.328 28.328 24 27.5 24C26.672 24 26 23.328 26 22.5Z" fill="#009EE3"/>
-    <path d="M19.5 26.5C20.5 28 22.1 29 24 29C25.9 29 27.5 28 28.5 26.5" stroke="#009EE3" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M8 24C8 15.163 15.163 8 24 8C32.837 8 40 15.163 40 24C40 32.837 32.837 40 24 40C15.163 40 8 32.837 8 24Z" fill="#009EE3" />
+    <path d="M24 13C18.477 13 14 17.477 14 23C14 26.176 15.512 29.003 17.851 30.851L16 35L20.92 33.394C21.892 33.782 22.922 34 24 34C29.523 34 34 29.523 34 24C34 18.477 29.523 13 24 13Z" fill="white" />
+    <path d="M19 22.5C19 21.672 19.672 21 20.5 21C21.328 21 22 21.672 22 22.5C22 23.328 21.328 24 20.5 24C19.672 24 19 23.328 19 22.5Z" fill="#009EE3" />
+    <path d="M26 22.5C26 21.672 26.672 21 27.5 21C28.328 21 29 21.672 29 22.5C29 23.328 28.328 24 27.5 24C26.672 24 26 23.328 26 22.5Z" fill="#009EE3" />
+    <path d="M19.5 26.5C20.5 28 22.1 29 24 29C25.9 29 27.5 28 28.5 26.5" stroke="#009EE3" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 )
 
@@ -72,7 +72,7 @@ function DetalleTransferencia({ total }) {
       <p className="text-sm text-gray-500 leading-relaxed">
         Realizá la transferencia por el monto exacto y envianos el comprobante por WhatsApp para confirmar tu pedido.
       </p>
-      <Copiable label="Titular" value="Club Atlético All Boys" />
+      <Copiable label="Titular" value="Club All Boys" />
       <Copiable label="CBU" value="0070000020000012345678" />
       <Copiable label="Alias" value="ALLBOYS.CLUB.LP" />
       <Copiable label="CUIT" value="30-12345678-9" />
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
           <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm font-display uppercase tracking-wide mb-6">
             <ArrowLeft className="w-4 h-4" /> Volver al carrito
           </button>
-          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-1">Club Atlético All Boys</p>
+          <p className="text-[#F9EA1B] text-sm font-display uppercase tracking-widest mb-1">Club All Boys</p>
           <h1 className="text-white font-display font-black text-4xl sm:text-5xl uppercase tracking-tight">Checkout</h1>
           <div className="w-16 h-1 bg-[#F9EA1B] rounded-full mt-4" />
         </div>

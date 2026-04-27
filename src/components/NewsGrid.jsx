@@ -1,61 +1,13 @@
+import { Link } from 'react-router-dom'
 import { Calendar, ArrowRight, BookOpen, Trophy, Users, Phone } from 'lucide-react'
+import { useNoticias } from '../context/NoticiasContext'
 
-const news = [
-  {
-    id: 1,
-    category: 'Fútbol',
-    title: 'All Boys golea y sigue líder de la tabla regional',
-    excerpt:
-      'Un contundente 3-0 frente al rival de turno dejó al equipo en la cima de la competencia con cuatro fechas por delante.',
-    date: '24 Abr 2026',
-    color: 'bg-allboys-blue',
-  },
-  {
-    id: 2,
-    category: 'Inferiores',
-    title: 'Las divisiones menores brillan en el torneo pampeano',
-    excerpt:
-      'Tres categorías de la cantera avanzaron a instancias decisivas del certamen juvenil provincial.',
-    date: '22 Abr 2026',
-    color: 'bg-allboys-blue-dark',
-  },
-  {
-    id: 3,
-    category: 'Institución',
-    title: 'Nueva sede social: el proyecto ya tiene fecha de inicio',
-    excerpt:
-      'La comisión directiva presentó el plan de obras de la futura sede, que contará con espacios modernos para todos los socios.',
-    date: '20 Abr 2026',
-    color: 'bg-allboys-blue-light',
-  },
-  {
-    id: 4,
-    category: 'Básquet',
-    title: 'El equipo de básquet se prepara para la gran final',
-    excerpt:
-      'Tras una temporada impecable, los chicos de All Boys disputarán la final del campeonato el próximo fin de semana.',
-    date: '18 Abr 2026',
-    color: 'bg-allboys-blue',
-  },
-  {
-    id: 5,
-    category: 'Socios',
-    title: '¡Superamos los 2.000 asociados este año!',
-    excerpt:
-      'El club celebra un hito histórico con más afiliados que nunca, consolidando su base institucional en La Pampa.',
-    date: '15 Abr 2026',
-    color: 'bg-allboys-blue-dark',
-  },
-  {
-    id: 6,
-    category: 'Historia',
-    title: 'Un nuevo aniversario: todo lo que hay que saber',
-    excerpt:
-      'All Boys cumple un nuevo año de vida con festejos en el estadio, actos culturales y una muestra fotográfica histórica.',
-    date: '12 Abr 2026',
-    color: 'bg-allboys-blue-light',
-  },
-]
+function formatFecha(fechaISO) {
+  if (!fechaISO) return ''
+  const [y, m, d] = fechaISO.split('-')
+  const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+  return `${parseInt(d)} ${meses[parseInt(m) - 1]} ${y}`
+}
 
 const sections = [
   {
@@ -90,40 +42,34 @@ const sections = [
 
 function NewsCard({ item }) {
   return (
-    <article className="card group cursor-pointer">
-      {/* Image area */}
-      <div className={`${item.color} h-44 flex items-center justify-center relative overflow-hidden`}>
-        <img
-          src="/logo.png"
-          alt="All Boys"
-          className="h-24 w-auto opacity-20 select-none"
-        />
+    <Link to={`/noticias/${item.id}`} className="card group cursor-pointer block">
+      <div className="h-44 flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: item.color || '#2E2DA8' }}>
+        {item.fotoPreview
+          ? <img src={item.fotoPreview} alt={item.titulo} className="w-full h-full object-cover" />
+          : <img src="/logo.png" alt="All Boys" className="h-24 w-auto opacity-20 select-none" />
+        }
         <div className="absolute top-3 left-3">
           <span className="bg-allboys-yellow text-allboys-blue text-xs font-display font-bold uppercase tracking-wide px-2 py-1 rounded">
-            {item.category}
+            {item.categoria}
           </span>
         </div>
       </div>
-
-      {/* Content */}
       <div className="p-5">
         <h3 className="font-display font-bold text-allboys-blue text-lg leading-tight mb-2 group-hover:text-allboys-blue-light transition-colors">
-          {item.title}
+          {item.titulo}
         </h3>
-        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
-          {item.excerpt}
-        </p>
+        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">{item.resumen}</p>
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1.5 text-gray-400 text-xs">
             <Calendar className="w-3.5 h-3.5" />
-            {item.date}
+            {formatFecha(item.fecha)}
           </span>
           <span className="flex items-center gap-1 text-allboys-blue text-sm font-semibold group-hover:gap-2 transition-all">
             Leer más <ArrowRight className="w-4 h-4" />
           </span>
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
 
@@ -147,6 +93,9 @@ function SectionCard({ section }) {
 }
 
 export default function NewsGrid() {
+  const { noticias } = useNoticias()
+  const recientes = [...noticias].sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 6)
+
   return (
     <div>
       {/* Noticias */}
@@ -159,16 +108,16 @@ export default function NewsGrid() {
               </p>
               <h2 className="section-title">Noticias</h2>
             </div>
-            <a
-              href="#noticias"
+            <Link
+              to="/noticias"
               className="sm:flex items-center gap-1.5 text-sm font-bold text-allboys-blue hover:gap-3 transition-all hidden font-display uppercase"
             >
               Ver todas <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {news.map((item) => (
+            {recientes.map((item) => (
               <NewsCard key={item.id} item={item} />
             ))}
           </div>

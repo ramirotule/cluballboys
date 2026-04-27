@@ -72,14 +72,14 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/logo.png"
-              alt="Club Atlético All Boys"
-              className="h-12 w-auto group-hover:scale-105 transition-transform duration-200"
+              alt="Club All Boys"
+              className="h-14 w-auto group-hover:scale-105 transition-transform duration-200"
             />
             <div className="hidden sm:block leading-tight">
-              <p className="font-display font-bold uppercase tracking-widest text-sm" style={{ color: '#2E2DA8' }}>
+              <p className="font-display font-bold uppercase tracking-widest text-base" style={{ color: '#2E2DA8' }}>
                 Club All Boys
               </p>
-              <p className="font-display text-xs font-medium tracking-wider" style={{ color: '#DFD018' }}>
+              <p className="font-display text-base font-medium tracking-wider" style={{ color: '#DFD018', WebkitTextStroke: '0.4px #2E2DA8' }}>
                 Santa Rosa · La Pampa
               </p>
             </div>
@@ -95,10 +95,19 @@ export default function Navbar() {
           {/* CTA desktop */}
           <Link
             to="/login"
-            className="hidden lg:flex items-center gap-2 font-display font-bold uppercase tracking-wide text-sm px-5 py-2 rounded-lg transition-all duration-200 border-2"
+            className="hidden lg:flex items-center gap-2 font-display font-bold uppercase tracking-wide text-sm px-5 py-2 rounded-lg transition-all duration-300 border-2"
             style={{ color: '#2E2DA8', borderColor: '#2E2DA8' }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2E2DA8'; e.currentTarget.style.color = 'white' }}
-            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#2E2DA8' }}
+            onMouseEnter={e => {
+              e.currentTarget.style.backgroundColor = '#2E2DA8'
+              e.currentTarget.style.color = '#F9EA1B'
+              e.currentTarget.style.borderColor = '#2E2DA8'
+              e.currentTarget.style.boxShadow = '0 0 16px #F9EA1B88, 0 0 4px #F9EA1BAA'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.backgroundColor = 'transparent'
+              e.currentTarget.style.color = '#2E2DA8'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
               <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />

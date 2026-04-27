@@ -170,7 +170,7 @@ function MiCarnet({ user }) {
                 className="w-16 h-16 rounded-full flex items-center justify-center font-display font-black text-2xl text-white shrink-0"
                 style={{ background: 'linear-gradient(135deg, #2d2d9e, #1e1e6e)' }}
               >
-                {user.nombre.split(' ').map(n => n[0]).slice(0,2).join('')}
+                {user.nombre.split(' ').map(n => n[0]).slice(0, 2).join('')}
               </div>
               <div>
                 <p className="font-bold text-sm leading-tight" style={{ color: '#1e1e6e' }}>{user.nombre}</p>
@@ -194,7 +194,7 @@ function MiCarnet({ user }) {
           {/* Footer */}
           <div className="px-5 py-2 text-center" style={{ backgroundColor: '#F9EA1B' }}>
             <p className="text-xs font-display font-bold uppercase tracking-widest" style={{ color: '#1e1e6e' }}>
-              Club Atlético All Boys
+              Club All Boys
             </p>
           </div>
         </div>
