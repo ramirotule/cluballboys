@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-white antialiased;
+    color: #2E2DA8;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg transition-colors duration-200;
+    background-color: #F9EA1B;
+    color: #2E2DA8;
+  }
+
+  .btn-primary:hover {
+    background-color: #DFD018;
+  }
+
+  .btn-outline {
+    @apply font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg transition-all duration-200;
+    border: 2px solid #F9EA1B;
+    color: #F9EA1B;
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: #F9EA1B;
+    color: #2E2DA8;
+  }
+
+  .section-title {
+    @apply font-display font-bold uppercase text-2xl md:text-3xl tracking-wide;
+    color: #2E2DA8;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+}
