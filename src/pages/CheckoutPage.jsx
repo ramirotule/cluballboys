@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, CheckCircle, Copy, Building2, Smartphone, MapPin, ChevronRight, ChevronDown } from 'lucide-react'
+import { useDatosBancarios } from '../context/DatosBancariosContext'
 
 const MercadoPagoIcon = () => (
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
@@ -67,16 +68,18 @@ function Copiable({ label, value }) {
 }
 
 function DetalleTransferencia({ total }) {
+  const { datos } = useDatosBancarios()
   return (
     <div className="flex flex-col gap-3 mt-4">
       <p className="text-sm text-gray-500 leading-relaxed">
         Realizá la transferencia por el monto exacto y envianos el comprobante por WhatsApp para confirmar tu pedido.
       </p>
-      <Copiable label="Titular" value="Club All Boys" />
-      <Copiable label="CBU" value="0070000020000012345678" />
-      <Copiable label="Alias" value="ALLBOYS.CLUB.LP" />
-      <Copiable label="CUIT" value="30-12345678-9" />
-      <Copiable label="Banco" value="Banco Patagonia" />
+      <Copiable label="Titular" value={datos.titular} />
+      <Copiable label="CBU"     value={datos.cbu}     />
+      <Copiable label="Alias"   value={datos.alias}   />
+      <Copiable label="CUIT"    value={datos.cuit}    />
+      <Copiable label="Banco"   value={datos.banco}   />
+      <Copiable label="N° de cuenta" value={datos.cuenta} />
       <div className="rounded-xl px-4 py-3 text-sm" style={{ backgroundColor: '#F9EA1B20', borderLeft: '3px solid #F9EA1B' }}>
         <p className="font-bold" style={{ color: '#1e1e6e' }}>Importe a transferir: <span style={{ color: '#DFD018' }}>{formatPrecio(total)}</span></p>
       </div>

@@ -6,13 +6,15 @@ import AdminPanel from '../components/dashboard/AdminPanel'
 import LigasPanel from '../components/dashboard/LigasPanel'
 import AuspiciantesPanel from '../components/dashboard/AuspiciantesPanel'
 import CantinaPanel from '../components/dashboard/CantinaPanel'
-import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard, Trophy, Handshake, UtensilsCrossed } from 'lucide-react'
+import DatosBancariosPanel from '../components/dashboard/DatosBancariosPanel'
+import { LogOut, Menu, X, Newspaper, User, Activity, CreditCard, IdCard, Trophy, Handshake, UtensilsCrossed, Landmark } from 'lucide-react'
 
 const ADMIN_SECTIONS = [
-  { id: 'noticias',      label: 'Noticias',      icon: Newspaper       },
-  { id: 'ligas',         label: 'Ligas',         icon: Trophy          },
-  { id: 'cantina',       label: 'Cantina',       icon: UtensilsCrossed },
-  { id: 'auspiciantes',  label: 'Auspiciantes',  icon: Handshake       },
+  { id: 'noticias',       label: 'Noticias',      icon: Newspaper       },
+  { id: 'ligas',          label: 'Ligas',         icon: Trophy          },
+  { id: 'cantina',        label: 'Cantina',       icon: UtensilsCrossed },
+  { id: 'auspiciantes',   label: 'Auspiciantes',  icon: Handshake       },
+  { id: 'datosbancarios', label: 'Datos Bancarios', icon: Landmark      },
 ]
 
 export default function DashboardPage() {
@@ -140,6 +142,7 @@ export default function DashboardPage() {
           {user.role === 'admin' && section === 'ligas' && <LigasPanel />}
           {user.role === 'admin' && section === 'cantina' && <CantinaPanel />}
           {user.role === 'admin' && section === 'auspiciantes' && <AuspiciantesPanel />}
+          {user.role === 'admin' && section === 'datosbancarios' && <DatosBancariosPanel />}
         </main>
       </div>
     </div>

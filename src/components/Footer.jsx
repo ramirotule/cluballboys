@@ -7,6 +7,9 @@ const quickLinks = [
   { label: 'Deportes', to: '/deportes' },
   { label: 'Autoridades', to: '/autoridades' },
   { label: 'Noticias', to: '/noticias' },
+  { label: 'Ligas', to: '/ligas' },
+  { label: 'Cantina', to: '/cantina' },
+  { label: 'Auspiciantes', to: '/auspiciantes' },
   { label: 'Shop', to: '/shop' },
   { label: 'Contacto', to: '/contacto' },
 ]

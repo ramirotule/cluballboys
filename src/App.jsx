@@ -4,6 +4,7 @@ import { LigasProvider } from './context/LigasContext'
 import { AuspiciantesProvider } from './context/AuspiciantesContext'
 import { CantinaProvider } from './context/CantinaContext'
 import { NoticiasProvider } from './context/NoticiasContext'
+import { DatosBancariosProvider } from './context/DatosBancariosContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -61,9 +62,11 @@ export default function App() {
       <LigasProvider>
         <AuspiciantesProvider>
           <CantinaProvider>
-            <BrowserRouter>
-              <Layout />
-            </BrowserRouter>
+            <DatosBancariosProvider>
+              <BrowserRouter>
+                <Layout />
+              </BrowserRouter>
+            </DatosBancariosProvider>
           </CantinaProvider>
         </AuspiciantesProvider>
       </LigasProvider>
